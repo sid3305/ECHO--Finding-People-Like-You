@@ -1,0 +1,301 @@
+id,user_id,gender,friend_preference,zodiac_sign,bio,date_of_birth
+1,1,female,any,Aquarius,Gym lover and lifelong learner.,1996-01-22
+2,2,female,male,Sagittarius,Creative thinker who loves music and design.,1993-12-18
+3,3,male,male,Gemini,Always exploring how the world works.,1991-05-22
+4,4,male,female,Libra,"Programming during the day, gaming at night.",2006-10-08
+5,5,male,any,Gemini,Building projects and learning new technologies.,2004-05-23
+6,6,female,male,Virgo,Health and consistency are important to me.,1999-09-05
+7,7,female,any,Gemini,Astronomy nerd and technology enthusiast.,1996-05-22
+8,8,male,male,Leo,Always working on a new creative project.,1996-08-18
+9,9,male,male,Taurus,Gaming and music are my escape.,1995-04-29
+10,10,male,any,Leo,Anime fan and movie enthusiast.,1996-08-06
+11,11,male,female,Virgo,"Programming during the day, gaming at night.",1992-09-12
+12,12,female,any,Cancer,Love reading about new discoveries.,2001-07-21
+13,13,female,male,Libra,Always exploring how the world works.,2005-10-09
+14,14,male,any,Virgo,Gym lover and lifelong learner.,1996-09-17
+15,15,female,female,Leo,Fitness enthusiast who enjoys staying active.,1994-07-31
+16,16,female,any,Virgo,Anime fan and movie enthusiast.,1990-09-20
+17,17,male,any,Scorpio,Always searching for the next great show.,1993-11-18
+18,18,female,any,Leo,Passionate about coding and innovation.,2006-08-14
+19,19,male,any,Pisces,Building projects and learning new technologies.,1995-02-25
+20,20,male,female,Sagittarius,Always working on a new creative project.,1995-12-16
+21,21,female,any,Cancer,Tech lover interested in machine learning.,1992-07-05
+22,22,female,male,Virgo,Gaming and music are my escape.,1996-09-14
+23,23,male,female,Sagittarius,Gaming and music are my escape.,1997-12-13
+24,24,male,female,Cancer,Anime fan and movie enthusiast.,2007-07-17
+25,25,female,male,Sagittarius,Building projects and learning new technologies.,2001-12-15
+26,26,female,female,Scorpio,Photography and art are my favorite hobbies.,2005-10-28
+27,27,female,female,Leo,Fitness enthusiast who enjoys staying active.,1999-08-17
+28,28,female,male,Virgo,Health and consistency are important to me.,1992-09-20
+29,29,male,female,Sagittarius,Entertainment keeps life interesting.,1992-12-08
+30,30,female,female,Aquarius,AI enthusiast and software developer.,2001-02-15
+31,31,male,male,Taurus,Astronomy nerd and technology enthusiast.,2001-04-22
+32,32,male,male,Aquarius,Building projects and learning new technologies.,1999-02-04
+33,33,male,any,Sagittarius,Photography and art are my favorite hobbies.,2007-11-23
+34,34,male,male,Sagittarius,Always working on a new creative project.,1991-11-24
+35,35,male,female,Aquarius,Always looking for workout buddies.,1992-01-27
+36,36,female,female,Aries,Love reading about new discoveries.,2003-04-11
+37,37,female,male,Scorpio,"Programming during the day, gaming at night.",2003-11-15
+38,38,male,male,Gemini,Music and creativity inspire me every day.,1991-06-01
+39,39,male,any,Scorpio,Always exploring how the world works.,1998-10-23
+40,40,male,male,Sagittarius,Love discussing anime and movies.,1999-11-27
+41,41,male,female,Leo,Building projects and learning new technologies.,2004-08-12
+42,42,male,male,Virgo,Entertainment keeps life interesting.,1999-08-24
+43,43,female,any,Aries,Curious about science and the universe.,1995-03-21
+44,44,female,any,Capricorn,Running helps me clear my mind.,2002-12-25
+45,45,female,any,Aries,Curious about science and the universe.,1992-04-03
+46,46,male,any,Virgo,Music and creativity inspire me every day.,1996-09-01
+47,47,male,any,Libra,Entertainment keeps life interesting.,1999-10-03
+48,48,female,female,Cancer,AI enthusiast and software developer.,1999-06-25
+49,49,female,female,Gemini,Photography and art are my favorite hobbies.,1996-06-12
+50,50,male,any,Capricorn,"Programming during the day, gaming at night.",2000-01-18
+51,51,female,male,Aquarius,Running helps me clear my mind.,2006-02-17
+52,52,male,female,Pisces,Always exploring how the world works.,2000-02-28
+53,53,female,female,Capricorn,Tech lover interested in machine learning.,1998-01-04
+54,54,male,female,Pisces,Love discussing anime and movies.,1996-03-12
+55,55,male,any,Scorpio,Health and consistency are important to me.,1991-11-04
+56,56,male,any,Virgo,Photography and art are my favorite hobbies.,1996-09-07
+57,57,male,male,Pisces,Building projects and learning new technologies.,2001-03-15
+58,58,female,female,Pisces,Curious about science and the universe.,2003-03-19
+59,59,female,any,Aries,Art lover looking for meaningful conversations.,1999-04-15
+60,60,female,female,Taurus,Running helps me clear my mind.,1992-05-18
+61,61,male,male,Aquarius,Always exploring how the world works.,1993-02-04
+62,62,male,female,Cancer,Passionate about coding and innovation.,1991-06-28
+63,63,male,female,Libra,Always working on a new creative project.,2001-09-26
+64,64,male,female,Aquarius,Art lover looking for meaningful conversations.,1993-02-04
+65,65,male,any,Taurus,AI enthusiast and software developer.,2002-04-27
+66,66,female,female,Capricorn,Always searching for the next great show.,1992-01-01
+67,67,female,male,Capricorn,Anime fan and movie enthusiast.,1999-01-11
+68,68,female,any,Sagittarius,Running helps me clear my mind.,2002-12-20
+69,69,male,any,Gemini,Entertainment keeps life interesting.,2006-06-04
+70,70,female,any,Virgo,Always searching for the next great show.,2004-09-16
+71,71,male,male,Aquarius,Love reading about new discoveries.,2003-02-07
+72,72,female,any,Gemini,Building projects and learning new technologies.,2007-06-08
+73,73,female,female,Capricorn,Always working on a new creative project.,2007-01-19
+74,74,male,male,Capricorn,Building projects and learning new technologies.,2000-01-19
+75,75,female,male,Taurus,Health and consistency are important to me.,2002-04-28
+76,76,male,any,Aquarius,Curious about science and the universe.,2008-02-17
+77,77,male,any,Aries,Always working on a new creative project.,1999-04-14
+78,78,female,any,Aquarius,Love reading about new discoveries.,1999-02-14
+79,79,female,female,Sagittarius,Entertainment keeps life interesting.,2007-12-13
+80,80,female,any,Libra,Always exploring how the world works.,1992-09-23
+81,81,female,male,Pisces,"Programming during the day, gaming at night.",2007-02-25
+82,82,male,male,Pisces,Art lover looking for meaningful conversations.,2003-02-26
+83,83,female,female,Libra,Curious about science and the universe.,2001-10-16
+84,84,male,any,Aquarius,Always looking for workout buddies.,2001-02-08
+85,85,male,male,Gemini,Science keeps me fascinated.,1996-06-16
+86,86,female,male,Libra,Love reading about new discoveries.,2001-10-16
+87,87,female,female,Aries,Love reading about new discoveries.,2003-04-01
+88,88,female,female,Capricorn,Love reading about new discoveries.,1992-12-27
+89,89,female,female,Libra,Love discussing anime and movies.,2004-09-26
+90,90,male,male,Aries,Always looking for workout buddies.,1997-03-21
+91,91,male,any,Aquarius,Love discussing anime and movies.,2000-02-07
+92,92,male,male,Virgo,Always searching for the next great show.,2007-09-22
+93,93,female,male,Taurus,Astronomy nerd and technology enthusiast.,2002-05-17
+94,94,male,female,Gemini,Creative thinker who loves music and design.,2008-06-02
+95,95,female,female,Scorpio,Always searching for the next great show.,1998-11-04
+96,96,male,any,Leo,Passionate about coding and innovation.,2004-08-21
+97,97,male,male,Gemini,Gym lover and lifelong learner.,2007-06-03
+98,98,female,male,Aries,Health and consistency are important to me.,2004-04-01
+99,99,female,any,Libra,Running helps me clear my mind.,1997-10-01
+100,100,female,female,Sagittarius,Fitness enthusiast who enjoys staying active.,1990-12-17
+101,101,female,female,Taurus,Creative thinker who loves music and design.,1996-04-21
+102,102,female,male,Taurus,Passionate about coding and innovation.,2008-04-22
+103,103,male,female,Cancer,Gym lover and lifelong learner.,1991-06-22
+104,104,female,female,Capricorn,Fitness enthusiast who enjoys staying active.,2000-01-09
+105,105,female,female,Scorpio,Love reading about new discoveries.,1994-11-03
+106,106,female,male,Taurus,Astronomy nerd and technology enthusiast.,1999-05-07
+107,107,female,any,Virgo,Tech lover interested in machine learning.,1997-09-20
+108,108,male,female,Cancer,"Programming during the day, gaming at night.",2005-06-29
+109,109,female,any,Taurus,Astronomy nerd and technology enthusiast.,1999-04-23
+110,110,male,male,Capricorn,Entertainment keeps life interesting.,1999-01-18
+111,111,female,female,Leo,Anime fan and movie enthusiast.,1997-08-06
+112,112,female,male,Pisces,Photography and art are my favorite hobbies.,2002-03-04
+113,113,female,male,Virgo,Health and consistency are important to me.,2000-09-19
+114,114,female,female,Aries,Science keeps me fascinated.,1999-04-19
+115,115,male,any,Libra,Anime fan and movie enthusiast.,1999-10-11
+116,116,male,any,Pisces,Music and creativity inspire me every day.,2006-03-16
+117,117,male,any,Virgo,Curious about science and the universe.,1999-09-12
+118,118,female,male,Leo,Curious about science and the universe.,2006-08-08
+119,119,male,female,Virgo,Passionate about coding and innovation.,2007-09-09
+120,120,female,female,Pisces,Always working on a new creative project.,1994-03-17
+121,121,male,any,Gemini,Astronomy nerd and technology enthusiast.,2000-06-04
+122,122,male,any,Libra,Photography and art are my favorite hobbies.,1999-09-24
+123,123,female,female,Cancer,Anime fan and movie enthusiast.,1991-06-30
+124,124,female,any,Libra,Gym lover and lifelong learner.,1994-09-28
+125,125,male,male,Gemini,Always working on a new creative project.,2004-06-15
+126,126,female,male,Aquarius,Building projects and learning new technologies.,2008-02-16
+127,127,male,female,Virgo,Gym lover and lifelong learner.,1997-09-15
+128,128,female,male,Cancer,Love discussing anime and movies.,1992-07-10
+129,129,male,any,Leo,Always searching for the next great show.,1996-07-27
+130,130,male,any,Virgo,Passionate about coding and innovation.,2000-08-23
+131,131,female,any,Cancer,AI enthusiast and software developer.,2001-07-04
+132,132,female,male,Pisces,Building projects and learning new technologies.,2006-03-15
+133,133,female,male,Aries,Science keeps me fascinated.,2001-04-15
+134,134,male,female,Libra,Entertainment keeps life interesting.,2003-10-04
+135,135,female,any,Leo,"Programming during the day, gaming at night.",2006-08-03
+136,136,female,female,Capricorn,Music and creativity inspire me every day.,2006-12-29
+137,137,male,male,Cancer,Science keeps me fascinated.,1998-07-19
+138,138,female,any,Aquarius,Love discussing anime and movies.,2005-02-16
+139,139,male,male,Gemini,Running helps me clear my mind.,1999-05-24
+140,140,female,any,Capricorn,Astronomy nerd and technology enthusiast.,2005-01-15
+141,141,female,female,Aquarius,Fitness enthusiast who enjoys staying active.,2004-02-07
+142,142,female,any,Libra,Love discussing anime and movies.,2004-10-22
+143,143,female,any,Gemini,AI enthusiast and software developer.,1993-06-09
+144,144,male,any,Cancer,Tech lover interested in machine learning.,1993-07-15
+145,145,female,male,Leo,Building projects and learning new technologies.,2001-08-02
+146,146,male,female,Aries,Gym lover and lifelong learner.,2004-04-09
+147,147,female,any,Sagittarius,Always looking for workout buddies.,2003-11-30
+148,148,female,any,Aquarius,Building projects and learning new technologies.,1992-01-26
+149,149,male,female,Cancer,AI enthusiast and software developer.,1997-06-25
+150,150,female,any,Leo,Gym lover and lifelong learner.,1990-07-24
+151,151,female,female,Capricorn,Music and creativity inspire me every day.,2006-01-05
+152,152,female,any,Scorpio,Gaming and music are my escape.,2002-10-25
+153,153,female,any,Scorpio,Anime fan and movie enthusiast.,1990-11-13
+154,154,female,male,Sagittarius,Health and consistency are important to me.,1993-12-01
+155,155,male,female,Taurus,Running helps me clear my mind.,1994-04-29
+156,156,female,female,Aquarius,Photography and art are my favorite hobbies.,2000-01-28
+157,157,female,any,Aries,Passionate about coding and innovation.,1995-03-26
+158,158,female,female,Scorpio,Gym lover and lifelong learner.,2007-10-29
+159,159,female,any,Virgo,Astronomy nerd and technology enthusiast.,2003-09-01
+160,160,female,female,Sagittarius,Love reading about new discoveries.,1995-12-18
+161,161,female,female,Cancer,Fitness enthusiast who enjoys staying active.,1991-07-22
+162,162,male,male,Taurus,Gaming and music are my escape.,1995-05-02
+163,163,male,male,Capricorn,Photography and art are my favorite hobbies.,1996-01-06
+164,164,female,any,Capricorn,Passionate about coding and innovation.,2008-01-01
+165,165,female,female,Taurus,Anime fan and movie enthusiast.,1997-04-21
+166,166,male,male,Scorpio,Art lover looking for meaningful conversations.,1994-11-15
+167,167,male,male,Scorpio,Art lover looking for meaningful conversations.,1999-11-18
+168,168,female,any,Taurus,Always searching for the next great show.,2002-05-15
+169,169,male,male,Aquarius,Anime fan and movie enthusiast.,1997-02-10
+170,170,female,male,Aries,"Programming during the day, gaming at night.",2002-04-09
+171,171,female,female,Pisces,Creative thinker who loves music and design.,2005-02-25
+172,172,male,female,Aquarius,Always searching for the next great show.,1993-02-07
+173,173,female,female,Aquarius,Love reading about new discoveries.,1995-01-26
+174,174,female,male,Cancer,Creative thinker who loves music and design.,1997-07-11
+175,175,female,any,Taurus,Fitness enthusiast who enjoys staying active.,2000-04-29
+176,176,female,female,Libra,Photography and art are my favorite hobbies.,1991-10-18
+177,177,female,male,Taurus,Science keeps me fascinated.,1998-05-19
+178,178,female,male,Libra,Love discussing anime and movies.,1995-09-30
+179,179,male,female,Scorpio,Art lover looking for meaningful conversations.,1991-11-06
+180,180,female,any,Gemini,Fitness enthusiast who enjoys staying active.,1991-06-07
+181,181,female,any,Pisces,Building projects and learning new technologies.,1992-02-29
+182,182,male,male,Leo,Love discussing anime and movies.,1993-08-05
+183,183,male,female,Gemini,Art lover looking for meaningful conversations.,1998-06-09
+184,184,male,female,Leo,Passionate about coding and innovation.,1990-08-14
+185,185,male,any,Pisces,Gaming and music are my escape.,2003-03-02
+186,186,male,female,Leo,Astronomy nerd and technology enthusiast.,1995-08-02
+187,187,male,male,Aquarius,Science keeps me fascinated.,1996-01-22
+188,188,male,male,Sagittarius,Anime fan and movie enthusiast.,1990-11-29
+189,189,male,any,Aquarius,Running helps me clear my mind.,2006-01-26
+190,190,female,male,Cancer,Tech lover interested in machine learning.,1996-06-23
+191,191,male,any,Scorpio,Building projects and learning new technologies.,2003-11-07
+192,192,female,any,Leo,Curious about science and the universe.,1998-08-22
+193,193,female,male,Aquarius,Fitness enthusiast who enjoys staying active.,1999-01-22
+194,194,female,male,Aquarius,Anime fan and movie enthusiast.,1991-01-23
+195,195,female,any,Gemini,Fitness enthusiast who enjoys staying active.,2001-05-30
+196,196,female,any,Aries,Creative thinker who loves music and design.,2002-04-14
+197,197,female,any,Gemini,Always searching for the next great show.,2004-06-05
+198,198,female,male,Cancer,Tech lover interested in machine learning.,2002-07-11
+199,199,male,any,Cancer,Fitness enthusiast who enjoys staying active.,2001-06-24
+200,200,female,female,Taurus,Tech lover interested in machine learning.,2008-04-28
+201,201,female,female,Scorpio,Health and consistency are important to me.,2006-10-30
+202,202,male,male,Capricorn,Always searching for the next great show.,1993-01-16
+203,203,female,any,Aquarius,Health and consistency are important to me.,2002-02-07
+204,204,female,male,Leo,AI enthusiast and software developer.,1992-08-16
+205,205,male,any,Leo,Always searching for the next great show.,1990-07-28
+206,206,female,male,Cancer,Love reading about new discoveries.,1997-06-28
+207,207,female,male,Cancer,Always searching for the next great show.,2002-06-23
+208,208,male,any,Virgo,Building projects and learning new technologies.,2003-09-05
+209,209,female,female,Leo,Tech lover interested in machine learning.,2002-07-26
+210,210,male,female,Sagittarius,AI enthusiast and software developer.,1996-12-20
+211,211,male,male,Taurus,Anime fan and movie enthusiast.,2000-05-04
+212,212,female,male,Scorpio,Love discussing anime and movies.,2006-11-09
+213,213,female,any,Capricorn,Astronomy nerd and technology enthusiast.,1992-12-24
+214,214,male,female,Sagittarius,Always looking for workout buddies.,2004-11-28
+215,215,female,any,Taurus,Gaming and music are my escape.,1997-04-24
+216,216,male,male,Virgo,Love discussing anime and movies.,2000-08-27
+217,217,female,female,Capricorn,Gym lover and lifelong learner.,1998-12-28
+218,218,male,any,Taurus,Photography and art are my favorite hobbies.,1993-05-16
+219,219,female,male,Aquarius,Curious about science and the universe.,1991-02-01
+220,220,male,any,Taurus,Building projects and learning new technologies.,2002-04-20
+221,221,female,female,Cancer,Building projects and learning new technologies.,2000-07-14
+222,222,female,any,Aquarius,Always working on a new creative project.,2004-02-17
+223,223,male,any,Virgo,AI enthusiast and software developer.,1995-09-09
+224,224,female,male,Sagittarius,Curious about science and the universe.,2003-12-18
+225,225,female,any,Leo,Anime fan and movie enthusiast.,1990-07-29
+226,226,female,any,Aquarius,Running helps me clear my mind.,2001-02-10
+227,227,male,any,Taurus,Anime fan and movie enthusiast.,2002-05-12
+228,228,female,female,Aries,Tech lover interested in machine learning.,1992-03-23
+229,229,male,any,Sagittarius,AI enthusiast and software developer.,1991-12-02
+230,230,male,female,Leo,Running helps me clear my mind.,1996-08-04
+231,231,male,any,Sagittarius,Fitness enthusiast who enjoys staying active.,2001-11-29
+232,232,male,female,Scorpio,Always looking for workout buddies.,2007-11-14
+233,233,female,male,Libra,Entertainment keeps life interesting.,1990-09-28
+234,234,male,male,Capricorn,Always looking for workout buddies.,1992-01-14
+235,235,male,female,Capricorn,Fitness enthusiast who enjoys staying active.,1994-01-01
+236,236,female,male,Leo,Creative thinker who loves music and design.,2000-07-28
+237,237,male,female,Taurus,Tech lover interested in machine learning.,1998-05-20
+238,238,female,male,Aquarius,Music and creativity inspire me every day.,2005-01-25
+239,239,female,any,Sagittarius,AI enthusiast and software developer.,2001-11-26
+240,240,female,male,Libra,Running helps me clear my mind.,1995-09-26
+241,241,male,any,Cancer,Always looking for workout buddies.,2000-06-28
+242,242,male,female,Libra,Always looking for workout buddies.,2000-10-05
+243,243,female,male,Leo,Building projects and learning new technologies.,2007-08-05
+244,244,male,male,Aquarius,Gaming and music are my escape.,2008-01-28
+245,245,male,any,Libra,Always exploring how the world works.,1998-10-15
+246,246,female,any,Virgo,Astronomy nerd and technology enthusiast.,2001-08-28
+247,247,male,male,Gemini,Always looking for workout buddies.,1993-06-15
+248,248,male,female,Aquarius,Gaming and music are my escape.,2004-02-09
+249,249,male,any,Pisces,Gym lover and lifelong learner.,2002-03-05
+250,250,male,female,Aquarius,Building projects and learning new technologies.,2004-02-10
+251,251,male,any,Virgo,Fitness enthusiast who enjoys staying active.,2000-08-30
+252,252,female,any,Libra,Astronomy nerd and technology enthusiast.,2007-10-19
+253,253,male,any,Capricorn,Anime fan and movie enthusiast.,2003-01-16
+254,254,male,female,Leo,Music and creativity inspire me every day.,1993-08-01
+255,255,male,female,Aquarius,Art lover looking for meaningful conversations.,1993-02-12
+256,256,female,any,Leo,Gaming and music are my escape.,1997-08-15
+257,257,female,female,Capricorn,Entertainment keeps life interesting.,2004-01-19
+258,258,female,any,Aries,AI enthusiast and software developer.,1998-04-15
+259,259,male,any,Virgo,Tech lover interested in machine learning.,2002-09-13
+260,260,male,any,Sagittarius,Always searching for the next great show.,1993-11-28
+261,261,female,male,Aries,Anime fan and movie enthusiast.,2000-04-13
+262,262,female,female,Cancer,Gym lover and lifelong learner.,1994-07-06
+263,263,male,female,Gemini,Fitness enthusiast who enjoys staying active.,1999-06-04
+264,264,female,male,Libra,Music and creativity inspire me every day.,1997-10-08
+265,265,female,female,Capricorn,Building projects and learning new technologies.,1991-01-14
+266,266,male,any,Aquarius,Running helps me clear my mind.,1997-02-11
+267,267,female,male,Pisces,Creative thinker who loves music and design.,2002-02-19
+268,268,male,any,Pisces,Running helps me clear my mind.,1999-03-17
+269,269,male,any,Aquarius,"Programming during the day, gaming at night.",1992-02-01
+270,270,female,any,Cancer,Anime fan and movie enthusiast.,1994-07-14
+271,271,female,female,Taurus,Love discussing anime and movies.,2008-05-19
+272,272,female,female,Sagittarius,Astronomy nerd and technology enthusiast.,1994-12-13
+273,273,female,female,Capricorn,Gym lover and lifelong learner.,1992-12-25
+274,274,male,any,Aries,Music and creativity inspire me every day.,1996-04-08
+275,275,female,male,Taurus,Gaming and music are my escape.,1993-05-04
+276,276,male,male,Libra,Tech lover interested in machine learning.,2007-10-03
+277,277,female,male,Virgo,Running helps me clear my mind.,2007-09-11
+278,278,female,any,Aries,Fitness enthusiast who enjoys staying active.,1997-04-02
+279,279,male,female,Libra,Building projects and learning new technologies.,2007-10-09
+280,280,male,any,Virgo,Astronomy nerd and technology enthusiast.,1999-08-31
+281,281,male,any,Leo,Music and creativity inspire me every day.,1992-08-01
+282,282,male,any,Scorpio,Science keeps me fascinated.,2001-11-12
+283,283,female,male,Pisces,Art lover looking for meaningful conversations.,1995-02-25
+284,284,male,female,Leo,Science keeps me fascinated.,1990-08-03
+285,285,female,female,Capricorn,Gym lover and lifelong learner.,1993-01-19
+286,286,male,female,Capricorn,Entertainment keeps life interesting.,2006-01-03
+287,287,male,male,Scorpio,Gaming and music are my escape.,1998-10-30
+288,288,female,any,Pisces,Photography and art are my favorite hobbies.,1995-02-24
+289,289,female,male,Libra,Love discussing anime and movies.,2005-10-14
+290,290,male,female,Gemini,Health and consistency are important to me.,2001-06-15
+291,291,female,any,Scorpio,Gym lover and lifelong learner.,2000-11-08
+292,292,female,male,Cancer,Creative thinker who loves music and design.,2006-07-20
+293,293,male,any,Aquarius,Love discussing anime and movies.,2006-02-02
+294,294,male,any,Gemini,Passionate about coding and innovation.,1993-06-19
+295,295,female,any,Scorpio,Art lover looking for meaningful conversations.,2003-10-26
+296,296,female,male,Aries,Running helps me clear my mind.,1991-04-02
+297,297,male,male,Pisces,Anime fan and movie enthusiast.,2006-03-07
+298,298,male,male,Capricorn,Curious about science and the universe.,2006-01-17
+299,299,female,any,Gemini,Science keeps me fascinated.,1992-05-24
+300,300,female,male,Aquarius,Fitness enthusiast who enjoys staying active.,2007-01-23
