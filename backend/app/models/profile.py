@@ -1,9 +1,10 @@
 from sqlalchemy import ForeignKey
-from sqlalchemy import Integer
 from sqlalchemy import String
 
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
+from datetime import date
+from sqlalchemy import Date
 
 from app.database.base import Base
 
@@ -20,8 +21,8 @@ class Profile(Base):
         unique=True
     )
 
-    age: Mapped[int] = mapped_column(
-        Integer
+    date_of_birth: Mapped[date] = mapped_column(
+        Date
     )
 
     gender: Mapped[str] = mapped_column(
@@ -34,7 +35,7 @@ class Profile(Base):
 
     zodiac_sign: Mapped[str | None] = mapped_column(
         String(20),
-        nullable=True
+        nullable=False
     )
 
     bio: Mapped[str | None] = mapped_column(

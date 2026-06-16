@@ -16,11 +16,19 @@ class UserResponse(BaseModel):
     id: int
     email: EmailStr
     anonymous_username: str
+    avatar_url: str | None = None
     is_verified: bool
 
     model_config = {
         "from_attributes": True
     }
+
+class UsernameUpdate(BaseModel):
+    username: str
+
+
+class MessageResponse(BaseModel):
+    message: str
 
 class Token(BaseModel):
     access_token: str

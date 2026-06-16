@@ -6,10 +6,9 @@ from sqlalchemy.orm import Session
 
 from app.database.session import get_db
 
-from app.schemas.auth_schema import (UserSignup,UserLogin,UserResponse,Token)
+from app.schemas.auth_schema import (UserSignup,UserLogin,UserResponse,UsernameUpdate,MessageResponse,Token)
 
-from app.services.auth_service import (create_user,get_user_by_email, authenticate_user, save_otp,verify_otp)
-from app.utils.username_generator import (generate_username)
+from app.services.auth_service import (create_user,get_user_by_email,authenticate_user,save_otp,verify_otp,generate_unique_username)
 from app.core.security import (create_access_token)
 from app.core.dependencies import get_current_user
 from app.models.user import User
@@ -17,6 +16,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import Form
 from app.services.otp_service import (generate_otp)
 from app.schemas.otp_schema import OTPVerify
+from app.database import db
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -41,7 +41,7 @@ def signup(
             detail="Email already registered"
         )
 
-    username = generate_username()
+    username = generate_unique_username(db)
 
     return create_user(
         db,
@@ -116,6 +116,58 @@ def get_me(
     )
 ):
     return current_user
+
+@router.patch(
+    "/username",
+    response_model=MessageResponse
+)
+def update_username(
+    username_data: UsernameUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(
+        get_current_user
+    )
+):
+
+    username = username_data.username.strip()
+
+    if len(username) < 3:
+        raise HTTPException(
+            status_code=400,
+            detail="Username must be at least 3 characters"
+        )
+
+    if len(username) > 30:
+        raise HTTPException(
+            status_code=400,
+            detail="Username must be at most 30 characters"
+        )
+
+    existing_user = (
+        db.query(User)
+        .filter(
+            User.anonymous_username == username
+        )
+        .first()
+    )
+
+    if existing_user and existing_user.id != current_user.id:
+        raise HTTPException(
+            status_code=400,
+            detail="Username already taken"
+        )
+
+    from app.utils.avatar_generator import (generate_avatar)
+
+    current_user.anonymous_username = username
+
+    current_user.avatar_url = generate_avatar(username)
+
+    db.commit()
+
+    return {
+        "message": "Username updated successfully"
+    }
 
 @router.post("/send-otp")
 def send_otp(
