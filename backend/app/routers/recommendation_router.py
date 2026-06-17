@@ -35,6 +35,9 @@ def get_my_recommendations(
         default=None,
         ge=13
     ),
+        respect_preference: bool = Query(
+        default=False
+    ),
     current_user: User = Depends(
         get_current_user
     )
@@ -45,7 +48,8 @@ def get_my_recommendations(
         top_n=top_n,
         gender=gender,
         min_age=min_age,
-        max_age=max_age
+        max_age=max_age,
+        respect_preference=respect_preference
     )
 
 
@@ -67,6 +71,9 @@ def get_recommendations_for_user(
     max_age: int | None = Query(
         default=None,
         ge=13
+    ),
+        respect_preference: bool = Query(
+        default=False
     )
 ):
 
@@ -75,5 +82,6 @@ def get_recommendations_for_user(
         top_n=top_n,
         gender=gender,
         min_age=min_age,
-        max_age=max_age
+        max_age=max_age,
+        respect_preference=respect_preference
     )

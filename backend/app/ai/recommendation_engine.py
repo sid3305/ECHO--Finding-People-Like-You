@@ -58,6 +58,21 @@ def get_user_gender(user_id: int, profiles) -> str | None:
 
     return gender
 
+def get_user_friend_preference(user_id: int, profiles) -> str | None:
+    user_profile_row = profiles[
+        profiles["user_id"] == user_id
+    ]
+
+    if user_profile_row.empty:
+        return None
+
+    preference = user_profile_row.iloc[0].get("friend_preference")
+
+    if pd.isna(preference):
+        return None
+
+    return preference
+
 def get_user_age(user_id: int, profiles) -> int | None:
     user_profile_row = profiles[
         profiles["user_id"] == user_id
@@ -145,7 +160,8 @@ def get_top_interest_matches(
     top_n: int = 5,
     gender: str | None = None,
     min_age: int | None = None,
-    max_age: int | None = None
+    max_age: int | None = None,
+    respect_preference: bool = False
 ):
     users, profiles, interests, user_interests, mbti_results = load_ai_dataset()
 
@@ -161,12 +177,35 @@ def get_top_interest_matches(
     target_embedding = generate_interest_embedding(target_interests)
     target_mbti = get_user_mbti(user_id, mbti_results)
     target_zodiac = get_user_zodiac(user_id, profiles)
+    target_friend_preference = get_user_friend_preference(
+        user_id,
+        profiles
+    )
 
     match_results = []
 
     for other_user_id in users["id"].tolist():
         if other_user_id == user_id:
             continue
+
+        if respect_preference:
+            if (
+                target_friend_preference
+                and target_friend_preference.lower() != "any"
+            ):
+                other_gender_for_preference = get_user_gender(
+                    other_user_id,
+                    profiles
+                )
+
+                if other_gender_for_preference is None:
+                    continue
+
+                if (
+                    other_gender_for_preference.lower()
+                    != target_friend_preference.lower()
+                ):
+                    continue
 
         if gender and gender.lower() != "all":
             other_profile = profiles[

@@ -6,14 +6,16 @@ def get_user_recommendations(
     top_n: int = 5,
     gender: str | None = None,
     min_age: int | None = None,
-    max_age: int | None = None
+    max_age: int | None = None,
+    respect_preference: bool = False
 ):
     matches = get_top_interest_matches(
         user_id=user_id,
         top_n=top_n,
         gender=gender,
         min_age=min_age,
-        max_age=max_age
+        max_age=max_age,
+        respect_preference=respect_preference
     )
 
     return {
@@ -22,7 +24,8 @@ def get_user_recommendations(
             "top_n": top_n,
             "gender": gender,
             "min_age": min_age,
-            "max_age": max_age
+            "max_age": max_age,
+            "respect_preference": respect_preference
         },
         "matches": matches
     }
