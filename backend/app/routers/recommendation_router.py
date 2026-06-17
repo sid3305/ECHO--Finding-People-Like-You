@@ -24,8 +24,16 @@ def get_my_recommendations(
         ge=1,
         le=50
     ),
-        gender: str | None = Query(
+    gender: str | None = Query(
         default=None
+    ),
+    min_age: int | None = Query(
+        default=None,
+        ge=13
+    ),
+    max_age: int | None = Query(
+        default=None,
+        ge=13
     ),
     current_user: User = Depends(
         get_current_user
@@ -35,7 +43,9 @@ def get_my_recommendations(
     return get_user_recommendations(
         user_id=current_user.id,
         top_n=top_n,
-        gender=gender
+        gender=gender,
+        min_age=min_age,
+        max_age=max_age
     )
 
 
@@ -49,11 +59,21 @@ def get_recommendations_for_user(
     ),
     gender: str | None = Query(
         default=None
+    ),
+    min_age: int | None = Query(
+        default=None,
+        ge=13
+    ),
+    max_age: int | None = Query(
+        default=None,
+        ge=13
     )
 ):
 
     return get_user_recommendations(
         user_id=user_id,
         top_n=top_n,
-        gender=gender
+        gender=gender,
+        min_age=min_age,
+        max_age=max_age
     )
