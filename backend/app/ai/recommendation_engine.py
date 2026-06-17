@@ -43,6 +43,20 @@ def get_user_mbti(user_id: int, mbti_results) -> str | None:
 
     return user_mbti_row.iloc[0]["mbti_type"]
 
+def get_user_gender(user_id: int, profiles) -> str | None:
+    user_profile_row = profiles[
+        profiles["user_id"] == user_id
+    ]
+
+    if user_profile_row.empty:
+        return None
+
+    gender = user_profile_row.iloc[0].get("gender")
+
+    if pd.isna(gender):
+        return None
+
+    return gender
 
 def get_user_zodiac(user_id: int, profiles) -> str | None:
     user_profile_row = profiles[
@@ -103,7 +117,11 @@ def calculate_final_match_score(
     return round(final_score, 4)
 
 
-def get_top_interest_matches(user_id: int, top_n: int = 5):
+def get_top_interest_matches(
+    user_id: int,
+    top_n: int = 5,
+    gender: str | None = None
+):
     users, profiles, interests, user_interests, mbti_results = load_ai_dataset()
 
     target_interests = get_user_interest_names(
@@ -124,6 +142,19 @@ def get_top_interest_matches(user_id: int, top_n: int = 5):
     for other_user_id in users["id"].tolist():
         if other_user_id == user_id:
             continue
+
+        if gender and gender.lower() != "all":
+            other_profile = profiles[
+                profiles["user_id"] == other_user_id
+            ]
+
+            if other_profile.empty:
+                continue
+
+            other_gender = other_profile.iloc[0]["gender"]
+
+            if str(other_gender).lower() != gender.lower():
+                continue
 
         other_interests = get_user_interest_names(
             other_user_id,
@@ -161,7 +192,8 @@ def get_top_interest_matches(user_id: int, top_n: int = 5):
             "final_score": final_score,
             "interests": other_interests,
             "mbti": other_mbti,
-            "zodiac": other_zodiac
+            "zodiac": other_zodiac,
+            "gender": get_user_gender(other_user_id, profiles)
         })
 
     match_results = sorted(

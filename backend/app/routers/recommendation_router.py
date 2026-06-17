@@ -24,6 +24,9 @@ def get_my_recommendations(
         ge=1,
         le=50
     ),
+        gender: str | None = Query(
+        default=None
+    ),
     current_user: User = Depends(
         get_current_user
     )
@@ -31,7 +34,8 @@ def get_my_recommendations(
 
     return get_user_recommendations(
         user_id=current_user.id,
-        top_n=top_n
+        top_n=top_n,
+        gender=gender
     )
 
 
@@ -42,10 +46,14 @@ def get_recommendations_for_user(
         default=5,
         ge=1,
         le=50
+    ),
+    gender: str | None = Query(
+        default=None
     )
 ):
 
     return get_user_recommendations(
         user_id=user_id,
-        top_n=top_n
+        top_n=top_n,
+        gender=gender
     )
