@@ -43,6 +43,7 @@ def get_user_mbti(user_id: int, mbti_results) -> str | None:
 
     return user_mbti_row.iloc[0]["mbti_type"]
 
+
 def get_user_gender(user_id: int, profiles) -> str | None:
     user_profile_row = profiles[
         profiles["user_id"] == user_id
@@ -58,6 +59,7 @@ def get_user_gender(user_id: int, profiles) -> str | None:
 
     return gender
 
+
 def get_user_friend_preference(user_id: int, profiles) -> str | None:
     user_profile_row = profiles[
         profiles["user_id"] == user_id
@@ -72,6 +74,7 @@ def get_user_friend_preference(user_id: int, profiles) -> str | None:
         return None
 
     return preference
+
 
 def get_user_age(user_id: int, profiles) -> int | None:
     user_profile_row = profiles[
@@ -95,6 +98,7 @@ def get_user_age(user_id: int, profiles) -> int | None:
         age -= 1
 
     return age
+
 
 def get_user_zodiac(user_id: int, profiles) -> str | None:
     user_profile_row = profiles[
@@ -135,7 +139,6 @@ def get_zodiac_score(user_zodiac: str | None, other_zodiac: str | None) -> float
         return 0.0
 
     compatibility = ZODIAC_COMPATIBILITY.get(user_zodiac, {})
-
     raw_score = compatibility.get(other_zodiac, 1)
 
     return raw_score / 3
@@ -153,6 +156,43 @@ def calculate_final_match_score(
     )
 
     return round(final_score, 4)
+
+
+def get_shared_interests(
+    target_interests: list[str],
+    other_interests: list[str]
+) -> list[str]:
+    return list(
+        set(target_interests).intersection(set(other_interests))
+    )
+
+
+def generate_match_reason(
+    shared_interests: list[str],
+    mbti_score: float,
+    zodiac_score: float
+) -> str:
+    reasons = []
+
+    if shared_interests:
+        reasons.append(
+            "You both like " + ", ".join(shared_interests[:3])
+        )
+
+    if mbti_score >= 0.7:
+        reasons.append("Your MBTI types are highly compatible")
+    elif mbti_score >= 0.4:
+        reasons.append("Your MBTI types are somewhat compatible")
+
+    if zodiac_score >= 0.7:
+        reasons.append("Your zodiac signs are highly compatible")
+    elif zodiac_score >= 0.4:
+        reasons.append("Your zodiac signs are somewhat compatible")
+
+    if not reasons:
+        return "This person is recommended based on your overall profile similarity."
+
+    return ". ".join(reasons) + "."
 
 
 def get_top_interest_matches(
@@ -220,20 +260,6 @@ def get_top_interest_matches(
             if str(other_gender).lower() != gender.lower():
                 continue
 
-        # ADD AGE FILTER HERE
-        other_age = get_user_age(
-            other_user_id,
-            profiles
-        )
-
-        if min_age is not None:
-            if other_age is None or other_age < min_age:
-                continue
-
-        if max_age is not None:
-            if other_age is None or other_age > max_age:
-                continue
-
         other_age = get_user_age(
             other_user_id,
             profiles
@@ -275,12 +301,25 @@ def get_top_interest_matches(
             zodiac_score
         )
 
+        shared_interests = get_shared_interests(
+            target_interests,
+            other_interests
+        )
+
+        match_reason = generate_match_reason(
+            shared_interests,
+            mbti_score,
+            zodiac_score
+        )
+
         match_results.append({
             "user_id": int(other_user_id),
             "interest_similarity": interest_similarity,
             "mbti_score": mbti_score,
             "zodiac_score": round(zodiac_score, 4),
             "final_score": final_score,
+            "shared_interests": shared_interests,
+            "match_reason": match_reason,
             "interests": other_interests,
             "mbti": other_mbti,
             "zodiac": other_zodiac,
