@@ -4,7 +4,7 @@ from app.ai.embedding_generator import generate_interest_embedding
 from app.ai.similarity_engine import calculate_interest_similarity
 from app.data.mbti_compatibility import MBTI_COMPATIBILITY
 from app.data.zodiac_compatibility import ZODIAC_COMPATIBILITY
-
+from datetime import date
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[3]
@@ -43,6 +43,58 @@ def get_user_mbti(user_id: int, mbti_results) -> str | None:
 
     return user_mbti_row.iloc[0]["mbti_type"]
 
+def get_user_gender(user_id: int, profiles) -> str | None:
+    user_profile_row = profiles[
+        profiles["user_id"] == user_id
+    ]
+
+    if user_profile_row.empty:
+        return None
+
+    gender = user_profile_row.iloc[0].get("gender")
+
+    if pd.isna(gender):
+        return None
+
+    return gender
+
+def get_user_friend_preference(user_id: int, profiles) -> str | None:
+    user_profile_row = profiles[
+        profiles["user_id"] == user_id
+    ]
+
+    if user_profile_row.empty:
+        return None
+
+    preference = user_profile_row.iloc[0].get("friend_preference")
+
+    if pd.isna(preference):
+        return None
+
+    return preference
+
+def get_user_age(user_id: int, profiles) -> int | None:
+    user_profile_row = profiles[
+        profiles["user_id"] == user_id
+    ]
+
+    if user_profile_row.empty:
+        return None
+
+    dob = user_profile_row.iloc[0].get("date_of_birth")
+
+    if pd.isna(dob):
+        return None
+
+    birth_date = pd.to_datetime(dob).date()
+    today = date.today()
+
+    age = today.year - birth_date.year
+
+    if (today.month, today.day) < (birth_date.month, birth_date.day):
+        age -= 1
+
+    return age
 
 def get_user_zodiac(user_id: int, profiles) -> str | None:
     user_profile_row = profiles[
@@ -103,7 +155,14 @@ def calculate_final_match_score(
     return round(final_score, 4)
 
 
-def get_top_interest_matches(user_id: int, top_n: int = 5):
+def get_top_interest_matches(
+    user_id: int,
+    top_n: int = 5,
+    gender: str | None = None,
+    min_age: int | None = None,
+    max_age: int | None = None,
+    respect_preference: bool = False
+):
     users, profiles, interests, user_interests, mbti_results = load_ai_dataset()
 
     target_interests = get_user_interest_names(
@@ -118,12 +177,75 @@ def get_top_interest_matches(user_id: int, top_n: int = 5):
     target_embedding = generate_interest_embedding(target_interests)
     target_mbti = get_user_mbti(user_id, mbti_results)
     target_zodiac = get_user_zodiac(user_id, profiles)
+    target_friend_preference = get_user_friend_preference(
+        user_id,
+        profiles
+    )
 
     match_results = []
 
     for other_user_id in users["id"].tolist():
         if other_user_id == user_id:
             continue
+
+        if respect_preference:
+            if (
+                target_friend_preference
+                and target_friend_preference.lower() != "any"
+            ):
+                other_gender_for_preference = get_user_gender(
+                    other_user_id,
+                    profiles
+                )
+
+                if other_gender_for_preference is None:
+                    continue
+
+                if (
+                    other_gender_for_preference.lower()
+                    != target_friend_preference.lower()
+                ):
+                    continue
+
+        if gender and gender.lower() != "all":
+            other_profile = profiles[
+                profiles["user_id"] == other_user_id
+            ]
+
+            if other_profile.empty:
+                continue
+
+            other_gender = other_profile.iloc[0]["gender"]
+
+            if str(other_gender).lower() != gender.lower():
+                continue
+
+        # ADD AGE FILTER HERE
+        other_age = get_user_age(
+            other_user_id,
+            profiles
+        )
+
+        if min_age is not None:
+            if other_age is None or other_age < min_age:
+                continue
+
+        if max_age is not None:
+            if other_age is None or other_age > max_age:
+                continue
+
+        other_age = get_user_age(
+            other_user_id,
+            profiles
+        )
+
+        if min_age is not None:
+            if other_age is None or other_age < min_age:
+                continue
+
+        if max_age is not None:
+            if other_age is None or other_age > max_age:
+                continue
 
         other_interests = get_user_interest_names(
             other_user_id,
@@ -161,7 +283,9 @@ def get_top_interest_matches(user_id: int, top_n: int = 5):
             "final_score": final_score,
             "interests": other_interests,
             "mbti": other_mbti,
-            "zodiac": other_zodiac
+            "zodiac": other_zodiac,
+            "gender": get_user_gender(other_user_id, profiles),
+            "age": get_user_age(other_user_id, profiles)
         })
 
     match_results = sorted(
