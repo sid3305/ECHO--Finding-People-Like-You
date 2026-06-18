@@ -4,6 +4,7 @@ from sqlalchemy import Boolean
 from sqlalchemy import DateTime
 from sqlalchemy import Integer
 from sqlalchemy import String
+from sqlalchemy import Text
 
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -47,6 +48,17 @@ class User(Base):
         default=False
     )
 
+    is_suspended: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False
+    )
+
+    suspension_reason: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True
+    )
+
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow
@@ -66,4 +78,5 @@ class User(Base):
     DateTime,
     nullable=True
     )
+
     

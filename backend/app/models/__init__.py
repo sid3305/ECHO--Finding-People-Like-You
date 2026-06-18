@@ -3,3 +3,7 @@ from app.models.profile import Profile
 from app.models.interest import Interest
 from app.models.user_interest import UserInterest
 from app.models.mbti_result import MBTIResult
+from app.models.block import Block
+from app.models.report import Report
+from app.models.match import Match
+from app.models.message import Message
