@@ -2,13 +2,14 @@ from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import Query
 
+from sqlalchemy.orm import Session
+
 from app.core.dependencies import get_current_user
+from app.database.session import get_db
 
 from app.models.user import User
 
-from app.services.recommendation_service import (
-    get_user_recommendations
-)
+from app.ai.database_recommendation_engine import get_recommendations
 
 
 router = APIRouter(
@@ -35,21 +36,21 @@ def get_my_recommendations(
         default=None,
         ge=13
     ),
-        respect_preference: bool = Query(
+    respect_preference: bool = Query(
         default=False
     ),
     current_user: User = Depends(
         get_current_user
+    ),
+    db: Session = Depends(
+        get_db
     )
 ):
 
-    return get_user_recommendations(
-        user_id=current_user.id,
-        top_n=top_n,
-        gender=gender,
-        min_age=min_age,
-        max_age=max_age,
-        respect_preference=respect_preference
+    return get_recommendations(
+        db=db,
+        current_user_id=current_user.id,
+        limit=top_n
     )
 
 
@@ -72,16 +73,16 @@ def get_recommendations_for_user(
         default=None,
         ge=13
     ),
-        respect_preference: bool = Query(
+    respect_preference: bool = Query(
         default=False
+    ),
+    db: Session = Depends(
+        get_db
     )
 ):
 
-    return get_user_recommendations(
-        user_id=user_id,
-        top_n=top_n,
-        gender=gender,
-        min_age=min_age,
-        max_age=max_age,
-        respect_preference=respect_preference
+    return get_recommendations(
+        db=db,
+        current_user_id=user_id,
+        limit=top_n
     )
