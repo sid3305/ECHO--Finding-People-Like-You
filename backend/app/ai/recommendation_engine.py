@@ -157,6 +157,14 @@ def calculate_final_match_score(
 
     return round(final_score, 4)
 
+def get_match_level(final_score: float) -> str:
+    if final_score >= 0.85:
+        return "High Match"
+
+    if final_score >= 0.65:
+        return "Medium Match"
+
+    return "Low Match"
 
 def get_shared_interests(
     target_interests: list[str],
@@ -300,6 +308,7 @@ def get_top_interest_matches(
             mbti_score,
             zodiac_score
         )
+        match_level = get_match_level(final_score)
 
         shared_interests = get_shared_interests(
             target_interests,
@@ -318,6 +327,7 @@ def get_top_interest_matches(
             "mbti_score": mbti_score,
             "zodiac_score": round(zodiac_score, 4),
             "final_score": final_score,
+            "match_level": match_level,
             "shared_interests": shared_interests,
             "match_reason": match_reason,
             "interests": other_interests,
