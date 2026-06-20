@@ -132,6 +132,34 @@ def calculate_age(dob: date | None) -> int | None:
         - ((today.month, today.day) < (dob.month, dob.day))
     )
 
+def candidate_matches_filters(
+    current_profile: Profile,
+    candidate_profile: Profile,
+    gender: str | None = None,
+    min_age: int | None = None,
+    max_age: int | None = None,
+    respect_preference: bool = False
+) -> bool:
+
+    candidate_age = calculate_age(
+        candidate_profile.date_of_birth
+    )
+
+    if gender and candidate_profile.gender.lower() != gender.lower():
+        return False
+
+    if min_age is not None and candidate_age is not None and candidate_age < min_age:
+        return False
+
+    if max_age is not None and candidate_age is not None and candidate_age > max_age:
+        return False
+
+    if respect_preference:
+        if current_profile.friend_preference.lower() != "any":
+            if candidate_profile.gender.lower() != current_profile.friend_preference.lower():
+                return False
+
+    return True
 
 def get_mbti_score(
     current_mbti: str | None,
@@ -200,28 +228,57 @@ def build_match_reason(
 
     return ", ".join(reasons)
 
+def get_candidate_users(
+    db: Session,
+    current_user_id: int,
+    gender: str | None = None,
+    min_age: int | None = None,
+    max_age: int | None = None,
+    respect_preference: bool = False
+) -> list[User]:
 
-def get_candidate_users(db: Session, current_user_id: int) -> list[User]:
-    """
-    Fetch users who can be considered for recommendation.
-    Excludes:
-    - current user
-    - suspended users
-    - blocked users
-    - users who blocked current user
-    """
+    excluded_ids = get_excluded_user_ids(
+        db,
+        current_user_id
+    )
 
-    excluded_ids = get_excluded_user_ids(db, current_user_id)
+    current_profile = get_user_profile(
+        db,
+        current_user_id
+    )
 
-    candidates = (
+    if not current_profile:
+        return []
+
+    users = (
         db.query(User)
         .filter(User.id.notin_(excluded_ids))
         .filter(User.is_suspended == False)
         .all()
     )
 
-    return candidates
+    candidates = []
 
+    for user in users:
+        candidate_profile = get_user_profile(
+            db,
+            user.id
+        )
+
+        if not candidate_profile:
+            continue
+
+        if candidate_matches_filters(
+            current_profile=current_profile,
+            candidate_profile=candidate_profile,
+            gender=gender,
+            min_age=min_age,
+            max_age=max_age,
+            respect_preference=respect_preference
+        ):
+            candidates.append(user)
+
+    return candidates
 
 def score_candidate(
     db: Session,
@@ -295,19 +352,23 @@ def score_candidate(
         "zodiac_score": zodiac_score,
     }
 
-
 def get_recommendations(
     db: Session,
     current_user_id: int,
-    limit: int = 10
+    limit: int = 10,
+    gender: str | None = None,
+    min_age: int | None = None,
+    max_age: int | None = None,
+    respect_preference: bool = False
 ):
-    """
-    Generate top recommendations for the current user.
-    """
 
     candidates = get_candidate_users(
-        db,
-        current_user_id
+        db=db,
+        current_user_id=current_user_id,
+        gender=gender,
+        min_age=min_age,
+        max_age=max_age,
+        respect_preference=respect_preference
     )
 
     recommendations = []

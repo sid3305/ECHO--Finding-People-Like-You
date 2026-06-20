@@ -84,5 +84,9 @@ def get_recommendations_for_user(
     return get_recommendations(
         db=db,
         current_user_id=user_id,
-        limit=top_n
+        limit=top_n,
+        gender=gender,
+        min_age=min_age,
+        max_age=max_age,
+        respect_preference=respect_preference
     )
