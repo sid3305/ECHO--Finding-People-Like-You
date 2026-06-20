@@ -99,8 +99,17 @@ def send_match_request(
     existing_match = (
         db.query(Match)
         .filter(
-            Match.requester_id == current_user.id,
-            Match.receiver_id == request.receiver_id
+            (
+                (Match.requester_id == current_user.id)
+                &
+                (Match.receiver_id == request.receiver_id)
+            )
+            |
+            (
+                (Match.requester_id == request.receiver_id)
+                &
+                (Match.receiver_id == current_user.id)
+            )
         )
         .first()
     )
@@ -146,6 +155,12 @@ def accept_match_request(
             status_code=403,
             detail="Not authorized"
         )
+    
+    if match.status != "pending":
+        raise HTTPException(
+            status_code=400,
+            detail="Only pending matches can be accepted"
+        )
 
     return accept_match(
         db,
@@ -180,6 +195,12 @@ def reject_match_request(
         raise HTTPException(
             status_code=403,
             detail="Not authorized"
+        )
+
+    if match.status != "pending":
+        raise HTTPException(
+            status_code=400,
+            detail="Only pending matches can be rejected"
         )
 
     return reject_match(

@@ -81,6 +81,32 @@ def get_users_who_blocked_current_user(db: Session, user_id: int) -> set[int]:
 
     return {row[0] for row in blockers}
 
+def get_accepted_match_user_ids(
+    db: Session,
+    user_id: int
+) -> set[int]:
+    """
+    Users already accepted as matches with current user.
+    """
+
+    matches = (
+        db.query(Match)
+        .filter(
+            Match.status == "accepted"
+        )
+        .all()
+    )
+
+    accepted_ids = set()
+
+    for match in matches:
+        if match.requester_id == user_id:
+            accepted_ids.add(match.receiver_id)
+
+        elif match.receiver_id == user_id:
+            accepted_ids.add(match.requester_id)
+
+    return accepted_ids
 
 def get_excluded_user_ids(db: Session, user_id: int) -> set[int]:
     """
@@ -90,6 +116,7 @@ def get_excluded_user_ids(db: Session, user_id: int) -> set[int]:
 
     excluded_ids.update(get_blocked_user_ids(db, user_id))
     excluded_ids.update(get_users_who_blocked_current_user(db, user_id))
+    excluded_ids.update(get_accepted_match_user_ids(db, user_id))
 
     return excluded_ids
 
