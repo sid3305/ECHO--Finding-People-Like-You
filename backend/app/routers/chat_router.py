@@ -12,7 +12,10 @@ from app.core.dependencies import get_current_user
 from app.models.user import User
 from app.models.match import Match
 
-from app.schemas.message_schema import MessageResponse
+from app.schemas.message_schema import (
+    MessageCreate,
+    MessageResponse
+)
 
 from app.services.chat_service import (
     get_chat_history,
@@ -26,6 +29,54 @@ router = APIRouter(
     tags=["Chat"]
 )
 
+@router.post(
+    "/send",
+    response_model=MessageResponse
+)
+def send_message(
+    message_data: MessageCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    match = (
+        db.query(Match)
+        .filter(
+            (
+                (Match.requester_id == current_user.id)
+                &
+                (Match.receiver_id == message_data.receiver_id)
+            )
+            |
+            (
+                (Match.requester_id == message_data.receiver_id)
+                &
+                (Match.receiver_id == current_user.id)
+            )
+        )
+        .filter(
+            Match.status == "accepted"
+        )
+        .first()
+    )
+
+    if not match:
+        raise HTTPException(
+            status_code=403,
+            detail="Chat unavailable"
+        )
+
+    if not message_data.content.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Message cannot be empty"
+        )
+
+    return save_message(
+        db,
+        current_user.id,
+        message_data.receiver_id,
+        message_data.content.strip()
+    )
 
 @router.get(
     "/history/{user_id}",
